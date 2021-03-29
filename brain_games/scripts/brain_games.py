@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def greet(welcome):
     print('{}'.format(welcome))
 
