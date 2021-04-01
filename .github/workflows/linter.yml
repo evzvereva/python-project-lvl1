@@ -1,8 +1,6 @@
 name: linter
 
-on:
-  - push
-  - pull_request
+on: push
 
 jobs:
   build:
@@ -12,16 +10,16 @@ jobs:
         # we want to test our package on several versions of Python
         python-version: [3.6, 3.7, 3.8]
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
           python-version: ${{ matrix.python-version }}
         # make depends on poetry
-      - name: Install dependencies
-        run: |
+    - name: Install dependencies
+      run: |
           pip install poetry
           make install
-      - name: Run linter and pytest
-        run: |
+    - name: Run Linter
+      run: |
           make lint
